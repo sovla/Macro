@@ -1,0 +1,8 @@
+[
+    {
+        "key": "f5",
+        "command": "code-runner.run",
+        "when": "editorTextFocus && editorLangId == 'ahk'"
+    },
+    { "key": "f6", "command": "code-runner.stop" }
+]

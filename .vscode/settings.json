@@ -1,0 +1,17 @@
+{
+    "typescript.locale": "ko",
+    "git.ignoreMissingGitWarning": true,
+    "[ahk]": {
+        "files.encoding": "euckr"
+    },
+
+    "code-runner.executorMap": {
+        "ahk": "\"C:\\Program Files\\AutoHotkey\\AutoHotkeyU32.exe\""
+    },
+
+    "code-runner.defaultLanguage": "ahk",
+
+    "code-runner.executorMapByFileExtension": {
+        ".ahk": "\"C:\\Program Files\\AutoHotkey\\AutoHotkeyU32.exe\""
+    }
+}
