@@ -29,7 +29,20 @@ MsgBox, vy
 ExitApp,
 
 F2::
-ImageSearch, vx, vy, 0, 0, 1920, 1080, *30 Image.png
+ImageSearch, vx, vy, 0, 0, 3500, 1080, *30 Image.png
+if (ErrorLevel = 0)
+{
+    MouseClick, Left,  vx, vy
+    MsgBox, 이미지를 찾았습니다! `n찾은 좌표: %vx%`, %vy%
+}
+else
+{
+    MsgBox, 이미지를 못 찾았거나, 이미지서치를 수행하지 못했습니다. (ErrorLevel = %ErrorLevel%)
+}
+return
+
+F3::
+ImageSearch, vx, vy, 0, 0, 3500, 1080, *30 Image.png
 if (ErrorLevel = 0)
 {
     MouseClick, Left,  vx, vy
