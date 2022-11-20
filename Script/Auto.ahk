@@ -7,6 +7,7 @@ orderArray:= Array()
 Gui, Show, w300 h300, 49강
 Gui, Add, Button, x10 y20 w100 h20 gBtn, 시작
 Gui, Add, Button, x10 y45 w100 h20 gBtnFileSelect, 파일선택
+Gui, Add, Button, x10 y70 w100 h20 gBtnTest, 테스트시작
 return
 
 GuiClose:
@@ -24,7 +25,6 @@ return
 
 findFolder(str){
   Text:=textCombiner(str)
-  MsgBox, 4096, Tip, %Text%
 
   t1:=A_TickCount, X:=Y:=""
 
@@ -117,11 +117,10 @@ findCopyButton(){
       Break
     }
 
-    Sleep, 10
-
     if(Round(okCopy.Length()) == 0){
       MouseClick, WheelDown, , , 2
     }
+    Sleep, 500
 
   }
 return Round(okCopy.Length())
@@ -183,7 +182,6 @@ return Round(ok2.Length())
 }
 
 cuttingProcess(forderPath){
-  MsgBox, 4096, Tip, % "forderPath" forderPath
   t1:=A_TickCount, X:="wait",Y:=100
 
   Text:="|<포토달력 최근 작업폴더>*197$48.CrsxCrvqSk8BPmHq6k8NnruSCzwzSzySTzxVAru64o0zArvyzo01Drs60rs1Drs600017Xs0U"
@@ -312,6 +310,40 @@ cuttingProcess(forderPath){
 
   }
 }
+
+closeButton(){
+  t1:=A_TickCount, X:="wait0",Y:=1
+
+  Text:="|<닫기버튼>*174$62.zzzzzzzznzDzzzwD3zyTbzzzz7kzznnzzzzksDzyNzzzzy6/zzky00zzvrzzyT007zzzzzz3zzzzzzzzzaTzzzznbzznnzzzzkMDztyTzzzwD3zwznzzzz3kzzTyU"
+
+  if (ok:=FindText(X, Y, 1882-150000, 12-150000, 1882+150000, 12+150000, 0, 0, Text))
+  {
+    FindText().Click(X+30, Y, "L")
+  }
+return Round(ok.Length())
+}
+
+complete(){
+  t1:=A_TickCount, X:="wait",Y:=100
+
+  Text:="|<학사모>*180$114.7w7000s0000000000003w70C0s7zz0000000000070C0s7zz000000000zzb0C0s707000000000zzb0C0s707000000000007kC0s7070000000007w7sC0s707000000000Dz7kC0s707000000000S770C0z707000000000Q3b0T0z7zz000000000S770T0s7zz000000000Dy70zUs3zz0000000003w70vks0700000000000061lss0700000000007zy3kws0700000000007zz7UQs0700000000007zz308sTzzk00000000007000sTzzs00000000007000sTzzs00000000007000s000000000000007000s000000000000000000000000000000000000000000000000004000000000000000008Mzy7kkyAM31sM0kMTyAMzwDsk0ADz00M0kMTy6k7kANnzgDz7yM0kM4A6kyyATkwC831ls0sS4A3knCANlyCDz3xs1wQTz3k3UDsnXADz6AM3iMTz3Vzz7klbA0k6Bs77MzzXU0000UyAzzXxs60NzzXkzy30k00zzU0M0DM1U3kTy3zkkA000zU0zkTy3kTy3zkzwA01ts1ksTy2kzy30kkQA03UM1UMM66Ms03zkkQDz1Us1ksTy6Azy3zkzwDz0zk0zkTyA4000000000000020008U"
+
+  if (ok:=FindText(X, Y, 2402-150000, 429-150000, 2402+150000, 429+150000, 0, 0, Text))
+  {
+    ; FindText().Click(X, Y, "L")
+  }
+
+  ; ok:=FindText(X:="wait", Y:=3, 0,0,0,0,0,0,Text)    ; Wait 3 seconds for appear
+  ; ok:=FindText(X:="wait0", Y:=-1, 0,0,0,0,0,0,Text)  ; Wait indefinitely for disappear
+
+return Round(ok.Length())
+}
+
+BtnTest:
+
+  complete()
+return
+
 Btn:
   for forderIndex, forder in orderArray
   {
@@ -343,13 +375,19 @@ Btn:
         ; undefinde 에러 뜰 경우 2스텝으로 
         step:= cuttingProcess(forder) != 0 ?6 :5
       }
-      MsgBox, 4096, Tip, % "한스텝 끝" step
-
       if(step == 6){
+        ; undefinde 에러 뜰 경우 2스텝으로 
+        step:= closeButton() != 0 ?7 :10
+      }
+      if(step == 10){
+        ; complete 완료 학사모 관련 문구가 있으면 완료임
+        step:= complete() != 0 ? 100 : 9
+      }
+
+      if(step == 100){
         break
       }
     }
-    MsgBox, 4096, Tip, % "포문 끝" step
 
   }
 
