@@ -8,6 +8,7 @@ Gui, Show, w300 h300, 49강
 Gui, Add, Button, x10 y20 w100 h20 gBtn, 시작
 Gui, Add, Button, x10 y45 w100 h20 gBtnFileSelect, 파일선택
 Gui, Add, Button, x10 y70 w100 h20 gBtnTest, 테스트시작
+FileEncoding ,UTF-8
 return
 
 GuiClose:
@@ -162,13 +163,13 @@ cuttingProgramStart() {
   ; 크롬 실행창 
   ; TODO undefined 처리 필요 undefined 뜰 경우 다시 위로
 
-  t3:=A_TickCount, X2:="wait",Y2:=20
+  t3:=A_TickCount, X2:="wait",Y2:=10
 
   Text2:="|<ChromePopup열기>*93$175.zzzzzzzbszzzzzzzzzzxzzzzzy7Q2ETznzzznxzzzw7VkDwDyztjzzyMDv/jztzzztwzzzyNjNnwrzTwzzzzSrxZmA8MQQAwAADBCbYxyzXho/VUza3wmtAqNYoqTAmTobLuSTDiqvBanTsRytRgtBuwtDaxDsn/xDDnb/Rab9bzzyQVqQaxSQbnSbysBybbyHZinHYny0SSLvCHSjCHtjHyAySHrzdmrNdmNzziz/xnNaHHNwn9zGTiNnxqvPAqPAzU7zZywAMQQAyQAzBDsQ7y3Xg6/VaTnzzm"
 
   if (ok2:=FindText(X2, Y2, 990-150000, 188-150000, 990+150000, 188+150000, 0, 0, Text2))
   {
-    Sleep, 1000 ; 간헐적으로 안눌러지는 경우 있음
+    Sleep, 500 ; 간헐적으로 안눌러지는 경우 있음
 
     FindText().Click(X2, Y2, "L")
   }
@@ -176,6 +177,7 @@ cuttingProgramStart() {
   if(Round(ok2.Length()) == 0){
     ; 실패의 경우 F5 누르고 
     Send, {F5}
+    Sleep, 500
 
   }
 return Round(ok2.Length())
@@ -190,16 +192,28 @@ cuttingProcess(forderPath){
   {
     FindText().Click(X,Y,"L")
     MouseClickDrag, Left, X+192, Y, X+300, Y
+    Sleep, 300
+
+    MouseMove, X, Y+100
+    MouseClick, WheelUp, , , 100
   }
 
-  t1:=A_TickCount, X:="wait",Y:=100
+  t1:=A_TickCount, X:=Y:=100
 
-  Text:="|<다운로드>*142$45.yED0zkTo2240220UE0EzkE42244020UQD0U0E42007y3yUFzs2007u0E0E000E21ztzs20000000ETk0004"
-
-  if (ok:=FindText(X, Y, 151-150000, 181-150000, 151+150000, 181+150000, 0, 0, Text))
+  Loop, 100
   {
-    FindText().Click(X, Y, "L")
-    FindText().Click(X, Y, "L")
+    Sleep, 100
+    Text:="|<다운로드>*142$45.yED0zkTo2240220UE0EzkE42244020UQD0U0E42007y3yUFzs2007u0E0E000E21ztzs20000000ETk0004"
+
+    if (ok:=FindText(X, Y, 155-150000, 253-150000, 155+150000, 253+150000, 0, 0, Text))
+    {
+      FindText().Click(X, Y, "L")
+      FindText().Click(X, Y, "L")
+      Break
+    }
+    if(Round(ok.Length()) == 0){
+      MouseClick, WheelDown, , , 2
+    }
   }
 
   t1:=A_TickCount, X:=Y:=""
@@ -339,9 +353,17 @@ complete(){
 return Round(ok.Length())
 }
 
-BtnTest:
+logSend(msg){
+  formattime, time, , yyyy년 MM월 dd일 tt h시 mm분 ss
+  FileAppend, [%time%]%msg%`n, Log.txt,
 
-  complete()
+}
+
+BtnTest:
+  step := 0
+  forder :="123213"
+  logSend( "step:" . %step% . " ,forder: " . forder)
+
 return
 
 Btn:
@@ -354,37 +376,47 @@ Btn:
       Sleep, 10
       if(step == 0){
         step:= goCuttingRoom() != 0 ? 1 :0
+        logSend( "step:" . step . " ,forder: " . forder)
+
       }
       if(step == 1){
         step:= goCalendarCuttingRoom() != 0 ? 2 :1
+        logSend( "step:" . step . " ,forder: " . forder)
       }
 
       if(step == 2){
         step:= findCopyButton() != 0 ? 3 :2
+        logSend( "step:" . step . " ,forder: " . forder)
       }
 
       if(step == 3){
         step:= popupProcess() != 0 ? 4 :3
+        logSend( "step:" . step . " ,forder: " . forder)
       }
       if(step == 4){
         ; undefinde 에러 뜰 경우 2스텝으로 
         step:= cuttingProgramStart() != 0 ?5 :2
+        logSend( "step:" . step . " ,forder: " . forder)
       }
 
       if(step == 5){
         ; undefinde 에러 뜰 경우 2스텝으로 
         step:= cuttingProcess(forder) != 0 ?6 :5
+        logSend( "step:" . step . " ,forder: " . forder)
       }
       if(step == 6){
         ; undefinde 에러 뜰 경우 2스텝으로 
         step:= closeButton() != 0 ?7 :10
+        logSend( "step:" . step . " ,forder: " . forder)
       }
       if(step == 10){
         ; complete 완료 학사모 관련 문구가 있으면 완료임
         step:= complete() != 0 ? 100 : 9
+        logSend( "step:" . step . " ,forder: " . forder)
       }
 
       if(step == 100){
+        logSend( "step:" . step . " ,forder: " . forder)
         break
       }
     }
