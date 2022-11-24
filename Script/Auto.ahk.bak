@@ -1,5 +1,5 @@
 
-#include ./FindText1.ahk
+#include /FindText1.ahk
 
 orderArray:= Array()
 ; orderArray.Push("221116-57056816_우재윤")
@@ -16,7 +16,7 @@ ExitApp
 
 BtnFileSelect:
   ;파일 선택 부분
-  FileSelectFile, d , s
+  FileSelectFile, d , s 
   FileEncoding ,UTF-8
   FileRead, var, %d%
   Loop, Parse, var, `n
@@ -61,7 +61,7 @@ textCombiner(str){
   textArray.Push("|<->*178$4.y")
   combineText:= ""
 
-  for index, element in StrSplit(str, "")
+  for index, element in StrSplit(str, "") 
   {
     for textIndex, textElement in textArray
     {
@@ -92,8 +92,8 @@ return Round(ok.Length())
 goCalendarCuttingRoom(){
   t1:=A_TickCount, X:="wait",Y:=100
 
-  Text:="|<탁상달력>*170$134.0601U0M060000000000000DtUMMzaDlU3k600A1k0M3U30M66A1UDs1a7U0D0g0S1M0zbVVv0Sz60kkM00k/01UK0A1UgMk6ADUAA6AAA6k0MBZn1sNaABX0M031Va31g063NqzqQBXyMzq01UM/0kn01VaMk1U0M0001U1k61UAAk0MNaA00007zU000k1UM36A06ANXTy3z00MTy0M0M/0lzk1Xzsk1VUMTy01UA066MA0k0M1bM0MM66000M3z1X330A060Nw063z1zs06000000000000M00000000000000000000062"
-  
+  Text:="|<탁상달력상품>*178$168.000000MMNyM0A000000000000603S7Uk1yMMNUNyw7Uk0A1UA1U0D6TnnAnk1UMMNUM6A4lk0Q3UQ3U0Nbszlgnk1ySQTUTyA0Pk0w7Uw7U0laMnlcEk1UMyNUNUw0MlaA7UA7jklaMnlsMk1UNXNzNUA0kkgABUABiMNbsznsMk1zP0M01UA1kkwABUABgMD6TnTsMk0000MTsz01UkMANUANgM06031cEk0zsDU0MTw3UkMANUANgM3s033Akk00MMsTsTw70kwAzkAzwM6A633AklU0MMMM00AC0laA1UA1iMA660w7UlU0MMMM00ADslaA1UA1jk6A600001U0MDUTs0A000000000A03s7z0000000000000000000000A00000U"
+
   if (ok:=FindText(X, Y, 267-150000, 608-150000, 267+150000, 608+150000, 0, 0, Text))
   {
     FindText().Click(X, Y, "L")
@@ -131,19 +131,18 @@ popupProcess(){
   ; 1012
   t1:=A_TickCount, X:="wait",Y:=20
 
-  Text:="|<10-12>*199$30.AS0ASwn0wnAn0AnAnyA6An0AAAn0AMAn0AkAS0AzU"
+  Text:="|<Class>*204$25.AQ3DCP3Yz8VkNYEMAmDAAN46CAW366P1a370nw"
 
   if (ok:=FindText(X, Y, 1984-150000, 468-150000, 1984+150000, 468+150000, 0, 0, Text))
   {
     FindText().Click(X, Y, "L")
-
   }
 
   ; 샘플
 
   t2:=A_TickCount, X1:="wait",Y1:=10
 
-  Text:="|<sample>*166$33.00008000010QQvD9oIIZ5FU2Yce/XoZ5T2WYce4IIZtFQRYc9k00100U"
+  Text:="|<sample>*187$34.0000400000E000010RtvbYt0oFlIo1F65FBx4MLwAIFnM0nF7tExx4M5s000U08"
 
   if (ok1:=FindText(X1, Y1, 1992-150000, 488-150000, 1992+150000, 488+150000, 0, 0, Text))
   {
@@ -161,12 +160,12 @@ return Round(ok.Length())
 }
 
 cuttingProgramStart() {
-  ; 크롬 실행창
+  ; 크롬 실행창 
   ; TODO undefined 처리 필요 undefined 뜰 경우 다시 위로
 
-  t3:=A_TickCount, X2:="wait",Y2:=20
+  t3:=A_TickCount, X2:="wait",Y2:=10
 
-  Text2:="|<프로그램실행>*200$30.0S7Vw0H8F6mFM92GFE91AHE918SE91AEM92KE8F6mE7VsU"
+  Text2:="|<ChromePopup열기>*93$175.zzzzzzzbszzzzzzzzzzxzzzzzy7Q2ETznzzznxzzzw7VkDwDyztjzzyMDv/jztzzztwzzzyNjNnwrzTwzzzzSrxZmA8MQQAwAADBCbYxyzXho/VUza3wmtAqNYoqTAmTobLuSTDiqvBanTsRytRgtBuwtDaxDsn/xDDnb/Rab9bzzyQVqQaxSQbnSbysBybbyHZinHYny0SSLvCHSjCHtjHyAySHrzdmrNdmNzziz/xnNaHHNwn9zGTiNnxqvPAqPAzU7zZywAMQQAyQAzBDsQ7y3Xg6/VaTnzzm"
 
   if (ok2:=FindText(X2, Y2, 990-150000, 188-150000, 990+150000, 188+150000, 0, 0, Text2))
   {
@@ -176,7 +175,7 @@ cuttingProgramStart() {
   }
 
   if(Round(ok2.Length()) == 0){
-    ; 실패의 경우 F5 누르고
+    ; 실패의 경우 F5 누르고 
     Send, {F5}
     Sleep, 500
 
@@ -395,18 +394,18 @@ Btn:
         logSend( "step:" . step . " ,forder: " . forder)
       }
       if(step == 4){
-        ; undefinde 에러 뜰 경우 2스텝으로
+        ; undefinde 에러 뜰 경우 2스텝으로 
         step:= cuttingProgramStart() != 0 ?5 :2
         logSend( "step:" . step . " ,forder: " . forder)
       }
 
       if(step == 5){
-        ; undefinde 에러 뜰 경우 2스텝으로
+        ; undefinde 에러 뜰 경우 2스텝으로 
         step:= cuttingProcess(forder) != 0 ?6 :5
         logSend( "step:" . step . " ,forder: " . forder)
       }
       if(step == 6){
-        ; undefinde 에러 뜰 경우 2스텝으로
+        ; undefinde 에러 뜰 경우 2스텝으로 
         step:= closeButton() != 0 ?7 :10
         logSend( "step:" . step . " ,forder: " . forder)
       }
