@@ -93,7 +93,7 @@ goCalendarCuttingRoom(){
   t1:=A_TickCount, X:="wait",Y:=100
 
   Text:="|<탁상달력>*170$134.0601U0M060000000000000DtUMMzaDlU3k600A1k0M3U30M66A1UDs1a7U0D0g0S1M0zbVVv0Sz60kkM00k/01UK0A1UgMk6ADUAA6AAA6k0MBZn1sNaABX0M031Va31g063NqzqQBXyMzq01UM/0kn01VaMk1U0M0001U1k61UAAk0MNaA00007zU000k1UM36A06ANXTy3z00MTy0M0M/0lzk1Xzsk1VUMTy01UA066MA0k0M1bM0MM66000M3z1X330A060Nw063z1zs06000000000000M00000000000000000000062"
-  
+
   if (ok:=FindText(X, Y, 267-150000, 608-150000, 267+150000, 608+150000, 0, 0, Text))
   {
     FindText().Click(X, Y, "L")
@@ -359,6 +359,11 @@ logSend(msg){
   FileAppend, [%time%]%msg%`n, Log.txt,
 
 }
+logCompleteSend(msg){
+  formattime, time, , yyyy년 MM월 dd일 tt h시 mm분 ss
+  FileAppend, [%time%]%msg%`n, LogComplete.txt,
+
+}
 
 BtnTest:
   step := 0
@@ -418,6 +423,7 @@ Btn:
 
       if(step == 100){
         logSend( "step:" . step . " ,forder: " . forder)
+        logCompleteSend( "forder: " . forder)
         break
       }
     }
