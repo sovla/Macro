@@ -1,5 +1,5 @@
 
-#include ./FindText1.ahk
+#include C:\Users\jg348\Desktop\개발관련\Macro\Script\FindText1.ahk
 
 orderArray:= Array()
 ; orderArray.Push("221116-57056816_우재윤")
@@ -46,11 +46,71 @@ findFolder(str){
   }
 }
 
+; findCuttingCopyButton(str){
+;   Text:=textCopyRoomCombiner(str)
+;   t1:=A_TickCount, X:=Y:=""
+;   result:= false
+
+;   Loop, 100
+;   {
+;     Sleep, 100
+
+;     if (ok:=FindText(X, Y, , , , , 0.15,0.15 , Text,,,1))
+;     {
+;       result = true
+;       ; FindText().Click(X, Y, "L")
+;       ; FindText().Click(X, Y, "L")
+;       Break
+;     }
+;     if(Round(ok.Length()) == 0){
+;       MouseClick, WheelDown, , , 2
+;     }
+
+;   }
+
+;   for i,v in ok ; ok value can be get from ok:=FindText().ok
+;     if (i<=2)
+;     FindText().MouseTip(ok[i].x, ok[i].y)
+
+; return result
+; }
+
+; textCopyRoomCombiner(str){
+;   textArray:= Array()
+;   textArray.Push("|<0>*189$7.C8gI+73VMYFm")
+;   textArray.Push("|<1>*212$4.DnAnAnC")
+;   textArray.Push("|<2>*176$6.CF112248EzU")
+;   textArray.Push("|<3>*182$6.S113A3113yU")
+;   textArray.Push("|<4>*196$7.33XlNAaXTkkO")
+;   textArray.Push("|<5>*181$5.z24D124Dc") 
+;   textArray.Push("|<6>*178$7.DA442tWUUIFm")
+;   textArray.Push("|<7>*179$6.z112244488U")
+;   textArray.Push("|<8>*200$7.D8wO8sqlkQPu") 
+;   textArray.Push("|<9>*187$7.SMcI/6y10UbW")
+;   textArray.Push("|<->*190$4.y")
+;   combineText:= ""
+;   for index, element in StrSplit(str, "")
+;   {
+;     for textIndex, textElement in textArray
+;     {
+;       if((element*1)+1 == textIndex){
+;         combineText .= textElement
+;       }
+;       if(element == "-" && textIndex == 11){
+;         combineText .= textElement
+;       }
+;     }
+;   }
+;   test:=SubStr(str, 1 ,1)
+
+; return combineText
+; }
+
 textCombiner(str){
   textArray:= Array()
   textArray.Push("|<0>*181$7.CAYGD6XFAXY")
   textArray.Push("|<1>*184$4.DnAnAnU")
-  textArray.Push("|<2>##0$")
+  textArray.Push("|<2>*144$5.R48F4l3w")
   textArray.Push("|<3>*155$5.RA8a32Do")
   textArray.Push("|<4>*171$7.33VlNgazVUo")
   textArray.Push("|<5>*157$5.z27VV3Do")
@@ -75,7 +135,6 @@ textCombiner(str){
   }
   test:=SubStr(str, 1 ,1)
 return combineText
-
 }
 goCuttingRoom(){
   t1:=A_TickCount, X:="wait",Y:=100
@@ -92,7 +151,8 @@ return Round(ok.Length())
 goCalendarCuttingRoom(){
   t1:=A_TickCount, X:="wait",Y:=100
 
-  Text:="|<탁상달력>*170$134.0601U0M060000000000000DtUMMzaDlU3k600A1k0M3U30M66A1UDs1a7U0D0g0S1M0zbVVv0Sz60kkM00k/01UK0A1UgMk6ADUAA6AAA6k0MBZn1sNaABX0M031Va31g063NqzqQBXyMzq01UM/0kn01VaMk1U0M0001U1k61UAAk0MNaA00007zU000k1UM36A06ANXTy3z00MTy0M0M/0lzk1Xzsk1VUMTy01UA066MA0k0M1bM0MM66000M3z1X330A060Nw063z1zs06000000000000M00000000000000000000062"
+  ; Text:="|<탁상달력>*170$134.0601U0M060000000000000DtUMMzaDlU3k600A1k0M3U30M66A1UDs1a7U0D0g0S1M0zbVVv0Sz60kkM00k/01UK0A1UgMk6ADUAA6AAA6k0MBZn1sNaABX0M031Va31g063NqzqQBXyMzq01UM/0kn01VaMk1U0M0001U1k61UAAk0MNaA00007zU000k1UM36A06ANXTy3z00MTy0M0M/0lzk1Xzsk1VUMTy01UA066MA0k0M1bM0MM66000M3z1X330A060Nw063z1zs06000000000000M00000000000000000000062" 회사용
+  Text:="|<탁상달력상품>*178$168.000000MMNyM0A000000000000603S7Uk1yMMNUNyw7Uk0A1UA1U0D6TnnAnk1UMMNUM6A4lk0Q3UQ3U0Nbszlgnk1ySQTUTyA0Pk0w7Uw7U0laMnlcEk1UMyNUNUw0MlaA7UA7jklaMnlsMk1UNXNzNUA0kkgABUABiMNbsznsMk1zP0M01UA1kkwABUABgMD6TnTsMk0000MTsz01UkMANUANgM06031cEk0zsDU0MTw3UkMANUANgM3s033Akk00MMsTsTw70kwAzkAzwM6A633AklU0MMMM00AC0laA1UA1iMA660w7UlU0MMMM00ADslaA1UA1jk6A600001U0MDUTs0A000000000A03s7z0000000000000000000000A00000U"
 
   if (ok:=FindText(X, Y, 267-150000, 608-150000, 267+150000, 608+150000, 0, 0, Text))
   {
@@ -105,12 +165,15 @@ goCalendarCuttingRoom(){
 return Round(ok.Length())
 }
 
-findCopyButton(){
+findCopyButton(forderPath){
+  ;   Send {WheelUp 1000}
+  ;   result:=findCuttingCopyButton(forderPath)
+  ; return result ? 2 : 0
   TextCopyButton:="|<복사하기버튼>*201$53.btzyTzbzt03wwy7C1mTbttzyTta0TnnU4znDbzbbztzaTDyD3VkzA00wCSNbwtzzsQwnDtm0DaNtaTbbzDAnnAyTDyQwbktlyTwzzDznzwU"
   XCopy:=YCopy:=""
-  Loop, 5
+  Loop, 100
   {
-    Sleep, 10
+    Sleep, 200
 
     if (okCopy:=FindText(XCopy, YCopy,485-150000, 458-150000, 485+150000, 458+150000, 0, 0, TextCopyButton))
     {
@@ -121,7 +184,6 @@ findCopyButton(){
     if(Round(okCopy.Length()) == 0){
       MouseClick, WheelDown, , , 2
     }
-    Sleep, 500
 
   }
 return Round(okCopy.Length())
@@ -131,7 +193,8 @@ popupProcess(){
   ; 1012
   t1:=A_TickCount, X:="wait",Y:=20
 
-  Text:="|<10-12>*199$30.AS0ASwn0wnAn0AnAnyA6An0AAAn0AMAn0AkAS0AzU"
+  ; Text:="|<10-12>*199$30.AS0ASwn0wnAn0AnAnyA6An0AAAn0AMAn0AkAS0AzU" 회사용
+  Text:="|<Class>*204$25.AQ3DCP3Yz8VkNYEMAmDAAN46CAW366P1a370nw"
 
   if (ok:=FindText(X, Y, 1984-150000, 468-150000, 1984+150000, 468+150000, 0, 0, Text))
   {
@@ -143,7 +206,8 @@ popupProcess(){
 
   t2:=A_TickCount, X1:="wait",Y1:=10
 
-  Text:="|<sample>*166$33.00008000010QQvD9oIIZ5FU2Yce/XoZ5T2WYce4IIZtFQRYc9k00100U"
+  ; Text:="|<sample>*166$33.00008000010QQvD9oIIZ5FU2Yce/XoZ5T2WYce4IIZtFQRYc9k00100U" 회사용
+  Text:="|<sample>*187$34.0000400000E000010RtvbYt0oFlIo1F65FBx4MLwAIFnM0nF7tExx4M5s000U08"
 
   if (ok1:=FindText(X1, Y1, 1992-150000, 488-150000, 1992+150000, 488+150000, 0, 0, Text))
   {
@@ -166,7 +230,8 @@ cuttingProgramStart() {
 
   t3:=A_TickCount, X2:="wait",Y2:=20
 
-  Text2:="|<프로그램실행>*200$30.0S7Vw0H8F6mFM92GFE91AHE918SE91AEM92KE8F6mE7VsU"
+  ; Text2:="|<프로그램실행>*200$30.0S7Vw0H8F6mFM92GFE91AHE918SE91AEM92KE8F6mE7VsU" 회사용
+  Text2:="|<ChromePopup열기>*93$175.zzzzzzzbszzzzzzzzzzxzzzzzy7Q2ETznzzznxzzzw7VkDwDyztjzzyMDv/jztzzztwzzzyNjNnwrzTwzzzzSrxZmA8MQQAwAADBCbYxyzXho/VUza3wmtAqNYoqTAmTobLuSTDiqvBanTsRytRgtBuwtDaxDsn/xDDnb/Rab9bzzyQVqQaxSQbnSbysBybbyHZinHYny0SSLvCHSjCHtjHyAySHrzdmrNdmNzziz/xnNaHHNwn9zGTiNnxqvPAqPAzU7zZywAMQQAyQAzBDsQ7y3Xg6/VaTnzzm"
 
   if (ok2:=FindText(X2, Y2, 990-150000, 188-150000, 990+150000, 188+150000, 0, 0, Text2))
   {
@@ -391,7 +456,7 @@ Btn:
       }
 
       if(step == 2){
-        step:= findCopyButton() != 0 ? 3 :2
+        step:= findCopyButton(forder) != 0 ?3 :2
         logSend( "step:" . step . " ,forder: " . forder)
       }
 
