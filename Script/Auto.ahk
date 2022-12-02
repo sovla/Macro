@@ -1,5 +1,5 @@
 
-#include C:\Users\jg348\Desktop\개발관련\Macro\Script\FindText1.ahk
+#include ./FindText1.ahk
 
 orderArray:= Array()
 ; orderArray.Push("221116-57056816_우재윤")
@@ -482,13 +482,14 @@ Btn:
       }
       if(step == 10){
         ; complete 완료 학사모 관련 문구가 있으면 완료임
-        step:= complete() != 0 ? 100 : 9
+        step:= complete() != 0 ? 100 : 100
+        logCompleteSend( "forder: " . forder)
         logSend( "step:" . step . " ,forder: " . forder)
       }
 
       if(step == 100){
         logSend( "step:" . step . " ,forder: " . forder)
-        logCompleteSend( "forder: " . forder)
+
         break
       }
     }
