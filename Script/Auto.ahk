@@ -33,7 +33,7 @@ findFolder(str){
   {
     Sleep, 100
 
-    if (ok:=FindText(X, Y, , , , , , , Text,,,1))
+    if (ok:=FindText(X, Y, , , , , 0.1,0.1 , Text,,,1))
     {
       FindText().Click(X, Y, "L")
       FindText().Click(X, Y, "L")
@@ -152,9 +152,12 @@ goCalendarCuttingRoom(){
   t1:=A_TickCount, X:="wait",Y:=100
 
   ; Text:="|<탁상달력>*170$134.0601U0M060000000000000DtUMMzaDlU3k600A1k0M3U30M66A1UDs1a7U0D0g0S1M0zbVVv0Sz60kkM00k/01UK0A1UgMk6ADUAA6AAA6k0MBZn1sNaABX0M031Va31g063NqzqQBXyMzq01UM/0kn01VaMk1U0M0001U1k61UAAk0MNaA00007zU000k1UM36A06ANXTy3z00MTy0M0M/0lzk1Xzsk1VUMTy01UA066MA0k0M1bM0MM66000M3z1X330A060Nw063z1zs06000000000000M00000000000000000000062" 회사용
-  Text:="|<탁상달력상품>*178$168.000000MMNyM0A000000000000603S7Uk1yMMNUNyw7Uk0A1UA1U0D6TnnAnk1UMMNUM6A4lk0Q3UQ3U0Nbszlgnk1ySQTUTyA0Pk0w7Uw7U0laMnlcEk1UMyNUNUw0MlaA7UA7jklaMnlsMk1UNXNzNUA0kkgABUABiMNbsznsMk1zP0M01UA1kkwABUABgMD6TnTsMk0000MTsz01UkMANUANgM06031cEk0zsDU0MTw3UkMANUANgM3s033Akk00MMsTsTw70kwAzkAzwM6A633AklU0MMMM00AC0laA1UA1iMA660w7UlU0MMMM00ADslaA1UA1jk6A600001U0MDUTs0A000000000A03s7z0000000000000000000000A00000U"
+   Text:="|<탁상달력V>*169$53.0601U0M07zA337wlyD0M66A1UDzwwADM3rsw1UgMk6ADsD3AlVgM3zqQBXyMzq0A030000A00007zU03zkTs033zk1VUMTy01U330kk003063z1zs07"
+   
+  ; Text:="|<탁상달력상품>*178$168.000000MMNyM0A000000000000603S7Uk1yMMNUNyw7Uk0A1UA1U0D6TnnAnk1UMMNUM6A4lk0Q3UQ3U0Nbszlgnk1ySQTUTyA0Pk0w7Uw7U0laMnlcEk1UMyNUNUw0MlaA7UA7jklaMnlsMk1UNXNzNUA0kkgABUABiMNbsznsMk1zP0M01UA1kkwABUABgMD6TnTsMk0000MTsz01UkMANUANgM06031cEk0zsDU0MTw3UkMANUANgM3s033Akk00MMsTsTw70kwAzkAzwM6A633AklU0MMMM00AC0laA1UA1iMA660w7UlU0MMMM00ADslaA1UA1jk6A600001U0MDUTs0A000000000A03s7z0000000000000000000000A00000U" 집용
 
-  if (ok:=FindText(X, Y, 267-150000, 608-150000, 267+150000, 608+150000, 0, 0, Text))
+
+  if (ok:=FindText(X, Y, 267-150000, 608-150000, 267+150000, 608+150000, 0.15, 0.15, Text))
   {
     FindText().Click(X, Y, "L")
     Sleep, 1000
@@ -194,9 +197,10 @@ popupProcess(){
   t1:=A_TickCount, X:="wait",Y:=20
 
   ; Text:="|<10-12>*199$30.AS0ASwn0wnAn0AnAnyA6An0AAAn0AMAn0AkAS0AzU" 회사용
-  Text:="|<Class>*204$25.AQ3DCP3Yz8VkNYEMAmDAAN46CAW366P1a370nw"
+  ;Text:="|<Class>*204$25.AQ3DCP3Yz8VkNYEMAmDAAN46CAW366P1a370nw"
+  Text:="|<10-12V>*199$30.AS0ASwn0wnAn0AnAnyA6An0AAAn0AMAn0AkAS0AzU"
 
-  if (ok:=FindText(X, Y, 1984-150000, 468-150000, 1984+150000, 468+150000, 0, 0, Text))
+  if (ok:=FindText(X, Y, 1984-150000, 468-150000, 1984+150000, 468+150000, 0.15, 0.15, Text))
   {
     FindText().Click(X, Y, "L")
 
@@ -207,7 +211,8 @@ popupProcess(){
   t2:=A_TickCount, X1:="wait",Y1:=10
 
   ; Text:="|<sample>*166$33.00008000010QQvD9oIIZ5FU2Yce/XoZ5T2WYce4IIZtFQRYc9k00100U" 회사용
-  Text:="|<sample>*187$34.0000400000E000010RtvbYt0oFlIo1F65FBx4MLwAIFnM0nF7tExx4M5s000U08"
+  ;Text:="|<sample>*187$34.0000400000E000010RtvbYt0oFlIo1F65FBx4MLwAIFnM0nF7tExx4M5s000U08"
+	Text:="|<sampleV>*166$33.00008000010QQvD9oIIZ5FU2Yce/XoZ5T2WYce4IIZtFQRYc9k00100U"
 
   if (ok1:=FindText(X1, Y1, 1992-150000, 488-150000, 1992+150000, 488+150000, 0, 0, Text))
   {
@@ -230,8 +235,8 @@ cuttingProgramStart() {
 
   t3:=A_TickCount, X2:="wait",Y2:=20
 
-  ; Text2:="|<프로그램실행>*200$30.0S7Vw0H8F6mFM92GFE91AHE918SE91AEM92KE8F6mE7VsU" 회사용
-  Text2:="|<ChromePopup열기>*93$175.zzzzzzzbszzzzzzzzzzxzzzzzy7Q2ETznzzznxzzzw7VkDwDyztjzzyMDv/jztzzztwzzzyNjNnwrzTwzzzzSrxZmA8MQQAwAADBCbYxyzXho/VUza3wmtAqNYoqTAmTobLuSTDiqvBanTsRytRgtBuwtDaxDsn/xDDnb/Rab9bzzyQVqQaxSQbnSbysBybbyHZinHYny0SSLvCHSjCHtjHyAySHrzdmrNdmNzziz/xnNaHHNwn9zGTiNnxqvPAqPAzU7zZywAMQQAyQAzBDsQ7y3Xg6/VaTnzzm"
+   Text2:="|<프로그램실행>*200$30.0S7Vw0H8F6mFM92GFE91AHE918SE91AEM92KE8F6mE7VsU" 회사용
+  ;Text2:="|<ChromePopup열기>*93$175.zzzzzzzbszzzzzzzzzzxzzzzzy7Q2ETznzzznxzzzw7VkDwDyztjzzyMDv/jztzzztwzzzyNjNnwrzTwzzzzSrxZmA8MQQAwAADBCbYxyzXho/VUza3wmtAqNYoqTAmTobLuSTDiqvBanTsRytRgtBuwtDaxDsn/xDDnb/Rab9bzzyQVqQaxSQbnSbysBybbyHZinHYny0SSLvCHSjCHtjHyAySHrzdmrNdmNzziz/xnNaHHNwn9zGTiNnxqvPAqPAzU7zZywAMQQAyQAzBDsQ7y3Xg6/VaTnzzm"
 
   if (ok2:=FindText(X2, Y2, 990-150000, 188-150000, 990+150000, 188+150000, 0, 0, Text2))
   {
@@ -431,9 +436,7 @@ logCompleteSend(msg){
 }
 
 BtnTest:
-  step := 0
-  forder :="123213"
-  logSend( "step:" . %step% . " ,forder: " . forder)
+  Send #{PrintScreen}
 
 return
 
