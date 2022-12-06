@@ -175,16 +175,17 @@ findCopyButton(forderPath){
   XCopy:=YCopy:=""
   Loop, 100
   {
-    Sleep, 200
+    Sleep, 75
 
     if (okCopy:=FindText(XCopy, YCopy,485-150000, 458-150000, 485+150000, 458+150000, 0, 0, TextCopyButton))
     {
+      Sleep, 200
       FindText().Click(XCopy, YCopy, "L")
       Break
     }
 
     if(Round(okCopy.Length()) == 0){
-      MouseClick, WheelDown, , , 2
+      MouseClick, WheelDown, , , 6
     }
 
   }
@@ -207,6 +208,7 @@ popupProcess(){
   if(Round(ok.Length()) == 0){
     return Round(ok.Length())
   }
+
   ; 샘플
 
   t2:=A_TickCount, X1:="wait",Y1:=10
@@ -383,7 +385,7 @@ cuttingProcess(forderPath){
   {
     FindText().Click(X, Y, "L")
   }
-
+  Send #{PrintScreen}
   t1:=A_TickCount, X:="wait",Y:=100
 
   Text:="|<주문데이터완료텍스트>*145$201.zVz3p3UDUTk7s24TcDUzU3UDsTk023U10EU880cY1002000EU122040W01200zEXUA2+11058E80Tk1i346sEEzU0QDsE0020E6kKCDs3d21s200G0Yl922400W10200SEXX1W000058E8szs488IEcDUzU3UDsTk2G3U00LyTw0cY10000000U0000U0008000VQ03zW4083p3UDUTk0y3s7s00402010002G1088MU900c00002088UU17zDy0TXzbz0SE9Vz0410050000Tk1344080000200000022g880UDs0c0002007kT0100000TU00000EaFz0000000000Tk00000000000000000000004"
@@ -437,7 +439,9 @@ logCompleteSend(msg){
 }
 
 BtnTest:
-  Send #{PrintScreen}
+  step := 0
+  forder :="123213"
+  logSend( "step:" . %step% . " ,forder: " . forder)
 
 return
 
@@ -465,7 +469,7 @@ Btn:
       }
 
       if(step == 3){
-        step:= popupProcess() != 0 ? 4 :3
+        step:= popupProcess() != 0 ? 4 :2
         logSend( "step:" . step . " ,forder: " . forder)
       }
       if(step == 4){
