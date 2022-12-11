@@ -16,7 +16,7 @@ ExitApp
 
 BtnFileSelect:
     ;파일 선택 부분
-    FileSelectFile, d , s
+    FileSelectFile, d , s 
     FileEncoding ,UTF-8
     FileRead, var, %d%
     Loop, Parse, var, `n
@@ -279,7 +279,7 @@ cuttingProcess(forderPath){
     }
     Sleep, 2000
     Send #{PrintScreen}
-    Sleep, 500
+    Sleep, 1500
 
     t1:=A_TickCount, XSave:=YSave:=""
 
