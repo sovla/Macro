@@ -89,7 +89,7 @@ popupProcess(str){
   MouseMove, 220, 480
   MouseClick, Left
 
-  return Round(ok.Length())
+  return Round(ok1.Length())
 }
 
 cuttingProgramStart() {
@@ -135,7 +135,7 @@ cuttingProcess(forderPath){
   t1:=A_TickCount, X:="wait",Y:=100
 
   Text:="|<주문번호>*161$46.TsTsVADkA10W4k00k42AH7y6UE8zw7VlVzW4lVg1008H4200zyzAMPzs400kz0k4E200k30E08030A100U7zkk7z3z00U"
-
+  Text.="|<주문번호>*159$47.TsTsl4Dk20UFW800A10X4FzUo217zUy767yAF66M600MW8400zyz4MNzw2008TU4140U0A0820100M0E4020DzUUDy7y00U"
   if (ok:=FindText(X, Y, 1537-150000, 795-150000, 1537+150000, 795+150000, 0, 0, Text))
   {
     FindText().Click(X, Y, "L")
@@ -318,6 +318,24 @@ logCompleteSend(msg){
 }
 
 BtnTest:
+  t1:=A_TickCount, X:="wait",Y:=100
+
+  Text:="|<주문번호>*161$46.TsTsVADkA10W4k00k42AH7y6UE8zw7VlVzW4lVg1008H4200zyzAMPzs400kz0k4E200k30E08030A100U7zkk7z3z00U"
+  Text.="|<주문번호>*159$47.TsTsl4Dk20UFW800A10X4FzUo217zUy767yAF66M600MW8400zyz4MNzw2008TU4140U0A0820100M0E4020DzUUDy7y00U"
+  if (ok:=FindText(X, Y, 1537-150000, 795-150000, 1537+150000, 795+150000, 0.15, 0.15, Text))
+  {
+    FindText().Click(X, Y, "L")
+    Sleep, 100
+    FindText().Click(X, Y, "L")
+    Sleep, 100
+    Send, {End}
+    Sleep, 100
+    Send, %forderPath%
+
+  }
+  Sleep, 2000
+  Send #{PrintScreen}
+  Sleep, 1500
 
 return
 

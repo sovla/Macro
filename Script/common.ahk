@@ -66,7 +66,8 @@ searchTextInBrowser(str){
     sleep, 500
 
     PixelSearch, Px, Py, 0, 0, W, H, 0xFF9632, 3, Fast RGB
-    sleep, 500
+    sleep, 100
+
     if (ErrorLevel = 0)
     {
         obj[0]:= Px
@@ -89,7 +90,7 @@ searchTextInBrowser2(str){
     sleep, 500
 
     PixelSearch, Px, Py, 0, 0, 1920, 1080, 0xFF9632, 3, Fast RGB
-    sleep, 1000
+    sleep, 300
     if (ErrorLevel = 0)
     {
         obj[0]:= Px
