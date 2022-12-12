@@ -1,7 +1,7 @@
 
-#include Script/FindText1.ahk
-#include Script/common.ahk
-#include Script/gui.ahk
+#include ./FindText1.ahk
+#include ./common.ahk
+#include ./gui.ahk
 
 goCuttingRoom(){
   SetTitleMatchMode, 2

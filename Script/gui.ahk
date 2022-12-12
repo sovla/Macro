@@ -1,5 +1,5 @@
 orderArray:= Array()
-orderArray.Push("22120301519845_유재선")
+
 
 Gui, Show, w300 h300, 49강
 Gui, Add, Button, x10 y20 w100 h20 gBtn, 시작

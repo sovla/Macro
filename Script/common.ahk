@@ -59,14 +59,14 @@ searchTextInBrowser(str){
     WinGetPos,,,W,H, 사진노리
     obj:=[0,0]
 
-    sleep, 500
+    sleep, 1000
     send, ^f
     sleep, 300
     send, %str%
     sleep, 500
 
     PixelSearch, Px, Py, 0, 0, W, H, 0xFF9632, 3, Fast RGB
-    sleep, 100
+    sleep, 500
 
     if (ErrorLevel = 0)
     {
@@ -83,14 +83,14 @@ searchTextInBrowser2(str){
     CoordMode, Pixel, Screen
     obj:=[0,0]
 
-    sleep, 500
+    sleep, 100
     send, ^f
     sleep, 500
     send, %str%
     sleep, 500
 
     PixelSearch, Px, Py, 0, 0, 1920, 1080, 0xFF9632, 3, Fast RGB
-    sleep, 300
+    sleep, 500
     if (ErrorLevel = 0)
     {
         obj[0]:= Px
