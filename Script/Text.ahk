@@ -42,15 +42,15 @@ findCopyButton(forderPath){
 
     ; MouseClick, Left, Px+470, Py,5,5
 
-    ; Count1:=SubStr(forderPath, forderPath.Length()-1)
-    ; MouseClick, Left, Px+170, Py+20,5,5
-    ; MouseClick, Left, Px+170, Py+20,5,5
-    ; Sleep, 100
-    ; Send, % Count1
-    ; Sleep, 200
-    ; MouseClick, Left, Px+200, Py+20,5,5
-    ; MouseClick, Left, Px+200, Py+20,5,5
-    ; Sleep, 2000
+    Count1:=SubStr(forderPath, -1)
+    MouseClick, Left, Px+170, Py+20,5,5
+    MouseClick, Left, Px+170, Py+20,5,5
+    Sleep, 100
+    Send, % Count1 
+    Sleep, 200
+    MouseClick, Left, Px+200, Py+20,5,5
+    MouseClick, Left, Px+200, Py+20,5,5
+    Sleep, 2000
 
     if(ErrorLevel = 0){
         return 2
